@@ -317,9 +317,35 @@ function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}
 function openHeart(){showModal("🧸🌹","You found my heart.","And unfortunately for you, Dhibu… you already had it. ❤️")}
 function showModal(icon,title,text){document.getElementById("modalIcon").textContent=icon;document.getElementById("modalTitle").textContent=title;document.getElementById("modalText").textContent=text;document.getElementById("modal").classList.add("show")}
 function closeModal(){document.getElementById("modal").classList.remove("show")}
-function playSong(name){
-  if(songLinks[name]) window.open(songLinks[name],"_blank");
-  else showModal("🌙🎵",name,"Add your YouTube or Spotify link in the songLinks object at the bottom of index.html, then this button will open it.");
+let currentAudio = null;
+
+function playSong(name) {
+  const file = songLinks[name];
+
+  if (!file) {
+    showModal("🌙🎵", name, "This song hasn't been added yet ❤️");
+    return;
+  }
+
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+  }
+
+  currentAudio = new Audio(encodeURI(file));
+  currentAudio.volume = 1;
+
+  currentAudio.play()
+    .then(() => {
+      showModal("🌙🎵", "Now Playing ❤️", name);
+    })
+    .catch(() => {
+      showModal(
+        "🎵",
+        "Couldn't play the song",
+        "Please make sure the MP3 filename in GitHub exactly matches the filename in songLinks."
+      );
+    });
 }
 function makePetal(){
  const p=document.createElement("div");p.className="petal";p.textContent=["🌸","🌹","✨","💗"][Math.floor(Math.random()*4)];
