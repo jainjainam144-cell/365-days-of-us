@@ -118,6 +118,120 @@ section{min-height:100vh;padding:110px 18px 80px;display:flex;align-items:center
 .modal.show{display:grid}.modal-card{background:#fff;border-radius:28px;max-width:480px;width:100%;padding:30px;text-align:center;box-shadow:0 30px 90px rgba(0,0,0,.25)}.modal-card .big{font-size:70px}.modal-card h3{font-family:Pacifico;font-size:30px;color:#df4e83;font-weight:400}
 footer{padding:30px;text-align:center;background:#4b2340;color:#fff0f6}
 .small{font-size:12px;opacity:.8}
+  /* BEAUTIFUL FLOATING MUSIC PLAYER */
+
+#musicPlayer {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5000;
+  width: min(430px, calc(100% - 28px));
+  animation: musicPlayerIn .5s ease;
+}
+
+.music-player-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 22px;
+
+  background: rgba(255,255,255,.94);
+  backdrop-filter: blur(18px);
+
+  border: 2px solid #ffd2e1;
+  box-shadow:
+    0 18px 50px rgba(116,55,88,.22),
+    0 0 30px rgba(255,135,178,.15);
+}
+
+.music-disc {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: linear-gradient(135deg,#ffe99a,#fff5cf);
+
+  box-shadow: 0 0 20px rgba(255,215,100,.5);
+
+  font-size: 25px;
+
+  animation: musicRotate 4s linear infinite;
+}
+
+.music-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.music-info strong {
+  color: #743c59;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-info span {
+  color: #c7658c;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.music-btn {
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  background: #fff0f5;
+
+  border: 1px solid #ffd1e0;
+
+  color: #d84f83;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.music-btn:hover {
+  transform: scale(1.08);
+  background: #ffe1ed;
+}
+
+@keyframes musicPlayerIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%,30px) scale(.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%,0) scale(1);
+  }
+}
+
+@keyframes musicRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
 </style>
 </head>
 <body>
@@ -272,11 +386,11 @@ footer{padding:30px;text-align:center;background:#4b2340;color:#fff0f6}
 <script>
 const songLinks = {
   "Abhi Kuch Dino Se":"Abhi Kuch Dino Se - DTBHJ.mp3",
-  "Perfect":"",
-  "Tujhko Jo Paya":"",
-  "Tum Mile":"",
-  "Blue":"",
-  "Bairan":""
+  "Perfect":"Perfect (slowed).mp3",
+  "Tujhko Jo Paya":"Tujhko Jo Paaya - Mere Bina_ Crook.mp3",
+  "Tum Mile":"Tum Mile Dil Khile - Instrumental_ Flute.mp3",
+  "Blue":"Blue Yung Kai Mp3 Download.mp3",
+  "Bairan":"Bairan_ Banjaare.mp3"
 };
 
 const secrets = [
@@ -318,6 +432,8 @@ function openHeart(){showModal("🧸🌹","You found my heart.","And unfortunate
 function showModal(icon,title,text){document.getElementById("modalIcon").textContent=icon;document.getElementById("modalTitle").textContent=title;document.getElementById("modalText").textContent=text;document.getElementById("modal").classList.add("show")}
 function closeModal(){document.getElementById("modal").classList.remove("show")}
 let currentAudio = null;
+let currentAudio = null;
+let currentSongName = "";
 
 function playSong(name) {
   const file = songLinks[name];
@@ -327,26 +443,78 @@ function playSong(name) {
     return;
   }
 
+  // Stop previous song
   if (currentAudio) {
     currentAudio.pause();
     currentAudio.currentTime = 0;
   }
 
+  // Create the new audio player
   currentAudio = new Audio(encodeURI(file));
+  currentSongName = name;
+
   currentAudio.volume = 1;
 
-  currentAudio.play()
-    .then(() => {
-      showModal("🌙🎵", "Now Playing ❤️", name);
-    })
-    .catch(() => {
-      showModal(
-        "🎵",
-        "Couldn't play the song",
-        "Please make sure the MP3 filename in GitHub exactly matches the filename in songLinks."
-      );
-    });
+  // Play without leaving the website
+  currentAudio.play().then(() => {
+    showMusicPlayer(name);
+  }).catch(() => {
+    showModal(
+      "🎵",
+      "Song couldn't play",
+      "Please check that the MP3 filename exactly matches the filename in GitHub."
+    );
+  });
 }
+
+function showMusicPlayer(name) {
+  let player = document.getElementById("musicPlayer");
+
+  if (!player) {
+    player = document.createElement("div");
+    player.id = "musicPlayer";
+
+    player.innerHTML = `
+      <div class="music-player-inner">
+        <div class="music-disc">🌙</div>
+
+        <div class="music-info">
+          <strong id="musicTitle"></strong>
+          <span>Playing for Dhibu ❤️</span>
+        </div>
+
+        <button id="pauseMusic" class="music-btn">⏸️</button>
+        <button id="closeMusic" class="music-btn">✕</button>
+      </div>
+    `;
+
+    document.body.appendChild(player);
+
+    document.getElementById("pauseMusic").onclick = function () {
+      if (!currentAudio) return;
+
+      if (currentAudio.paused) {
+        currentAudio.play();
+        this.textContent = "⏸️";
+      } else {
+        currentAudio.pause();
+        this.textContent = "▶️";
+      }
+    };
+
+    document.getElementById("closeMusic").onclick = function () {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+
+      player.remove();
+    };
+  }
+
+  document.getElementById("musicTitle").textContent = name;
+}
+
 function makePetal(){
  const p=document.createElement("div");p.className="petal";p.textContent=["🌸","🌹","✨","💗"][Math.floor(Math.random()*4)];
  p.style.left=Math.random()*100+"vw";p.style.animationDuration=(5+Math.random()*6)+"s";p.style.fontSize=(12+Math.random()*15)+"px";
