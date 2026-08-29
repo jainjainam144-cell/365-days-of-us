@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#fff3f7">
+<title>365 Days of Us — Jainu ❤️ Dhibu</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap');
+
+:root{
+  --pink:#ff6f9f;--rose:#ff8fb5;--deep:#4b2340;--cream:#fffaf7;
+  --peach:#ffd7c4;--lav:#eadcff;--yellow:#ffe89a;--green:#cfeecb;
+  --shadow:0 18px 50px rgba(103,55,83,.14);
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#fff8fb,#fffdf7 42%,#fff4f8);color:#4a3341;font-family:"DM Sans",sans-serif;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0}
+a{text-decoration:none;color:inherit}
+#loader{position:fixed;inset:0;background:linear-gradient(135deg,#fff0f6,#fff9df);z-index:9999;display:grid;place-items:center;transition:.7s}
+.loader-box{text-align:center}
+.loader-teddy{font-size:76px;animation:bounce 1.3s infinite}
+.loader-box h1{font-family:Pacifico;color:#e95689;font-weight:400;margin:8px 0}
+.loader-box p{margin:0;color:#785669}
+@keyframes bounce{50%{transform:translateY(-14px) rotate(-3deg)}}
+#progress{position:fixed;top:0;left:0;height:5px;background:linear-gradient(90deg,#ff5f9b,#ffc66d);z-index:2000;width:0}
+#petals{position:fixed;inset:0;pointer-events:none;z-index:30;overflow:hidden}
+.petal{position:absolute;top:-30px;font-size:18px;animation:fall linear forwards;opacity:.8}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:0}}
+nav{position:fixed;top:15px;left:50%;transform:translateX(-50%);z-index:1000;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);box-shadow:0 10px 35px rgba(80,35,62,.1);border:1px solid #fff;border-radius:999px;padding:8px 14px;display:flex;gap:6px;max-width:94%;overflow:auto}
+nav a{font-size:12px;font-weight:700;color:#6b4c5c;padding:9px 11px;border-radius:999px;white-space:nowrap}
+nav a:hover{background:#ffe0eb;color:#d93d76}
+section{min-height:100vh;padding:110px 18px 80px;display:flex;align-items:center;justify-content:center;position:relative}
+.container{width:min(1080px,100%);margin:auto}
+.hero{background:
+ radial-gradient(circle at 15% 20%,#fff 0 5%,transparent 6%),
+ radial-gradient(circle at 80% 25%,#fff 0 4%,transparent 5%),
+ linear-gradient(135deg,#fff0f7,#fff9db 52%,#e8f7ff)}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(1px);opacity:.65}
+.hero:before{width:360px;height:360px;background:#ffd5e5;left:-150px;top:8%}
+.hero:after{width:280px;height:280px;background:#d9efff;right:-100px;bottom:10%}
+.hero-content{text-align:center;position:relative;z-index:2}
+.sun{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,#fff5a8,#ffd56d);box-shadow:0 0 70px #ffd879;margin:0 auto 24px;display:grid;place-items:center;font-size:55px}
+.script{font-family:Pacifico;font-weight:400;color:#e9578d}
+.hero h1{font-size:clamp(44px,9vw,88px);line-height:1.02;margin:8px 0;color:#4b2340}
+.hero h2{font-size:clamp(20px,4vw,32px);margin:10px 0;color:#c94c7c}
+.hero p{max-width:720px;margin:14px auto;line-height:1.8;color:#6d5260;font-size:17px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;background:linear-gradient(135deg,#ff5f9b,#ff8eaa);color:#fff;font-weight:800;box-shadow:0 12px 28px rgba(255,95,155,.25);transition:.25s}
+.btn:hover{transform:translateY(-3px) scale(1.02)}
+.btn.alt{background:#fff;color:#d8497f;border:2px solid #ffd0df;box-shadow:none}
+.teddy{position:absolute;font-size:55px;animation:float 4s ease-in-out infinite}
+.t1{left:6%;top:23%}.t2{right:7%;top:31%;animation-delay:1s}.t3{left:12%;bottom:14%;animation-delay:2s}.t4{right:15%;bottom:11%;animation-delay:.5s}
+@keyframes float{50%{transform:translateY(-18px) rotate(4deg)}}
+.reveal{opacity:0;transform:translateY(28px);transition:.8s}
+.reveal.show{opacity:1;transform:none}
+.center{text-align:center}
+.section-title{font-size:clamp(34px,6vw,58px);margin:0 0 12px;color:#4b2340}
+.section-sub{max-width:700px;margin:0 auto 35px;text-align:center;line-height:1.7;color:#745c68}
+.soft{background:#fff}
+.pink{background:linear-gradient(135deg,#fff0f6,#fff7fb)}
+.timeline{position:relative;margin-top:30px}
+.timeline:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;background:linear-gradient(#ffc0d5,#e6d1ff,#ffc0d5);transform:translateX(-50%);border-radius:10px}
+.chapter{width:calc(50% - 35px);background:#fff;border:1px solid #f7e3eb;border-radius:28px;padding:22px;box-shadow:var(--shadow);margin:0 0 48px;position:relative}
+.chapter:nth-child(odd){margin-right:auto}
+.chapter:nth-child(even){margin-left:auto}
+.chapter:after{content:"";position:absolute;top:30px;width:18px;height:18px;border-radius:50%;background:#ff709f;border:5px solid #fff;box-shadow:0 0 0 2px #ffb6ce}
+.chapter:nth-child(odd):after{right:-46px}
+.chapter:nth-child(even):after{left:-46px}
+.chapter img{width:100%;height:360px;object-fit:cover;border-radius:20px}
+.chapter h3{margin:16px 0 8px;font-size:23px;color:#9f3f68}
+.chapter p{line-height:1.8;margin:0;color:#654e5b}
+.badge{display:inline-block;background:#fff0f5;color:#df4e83;padding:7px 11px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:8px}
+@media(max-width:760px){
+ .timeline:before{left:12px}.chapter,.chapter:nth-child(even),.chapter:nth-child(odd){width:calc(100% - 35px);margin-left:35px;margin-right:0}
+ .chapter:nth-child(odd):after,.chapter:nth-child(even):after{left:-34px;right:auto}
+ .chapter img{height:330px}
+}
+.scrapbook{background:linear-gradient(135deg,#fff8dd,#fff0f6)}
+.book{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:930px;margin:auto}
+.page{background:#fffef9;border-radius:8px;padding:14px 14px 28px;box-shadow:0 14px 30px rgba(85,55,50,.13);transform:rotate(var(--r));transition:.3s;border:1px solid #eee4d7}
+.page:hover{transform:rotate(0) translateY(-8px)}
+.page img{width:100%;height:390px;object-fit:cover;border-radius:4px}
+.page h4{font-family:Pacifico;color:#c5537e;font-size:24px;margin:13px 6px 4px;font-weight:400}
+.page p{margin:0 6px;color:#735b62;line-height:1.5}
+@media(max-width:700px){.book{grid-template-columns:1fr}.page img{height:430px}}
+.songs{background:linear-gradient(135deg,#f1ebff,#fff4fa)}
+.song-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.song{background:rgba(255,255,255,.82);border:1px solid #eee0ff;border-radius:25px;padding:23px;min-height:220px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.moon{width:75px;height:75px;border-radius:50%;background:#fff6b8;box-shadow:0 0 30px #ffe58c;margin-bottom:14px;display:grid;place-items:center;font-size:35px}
+.song h3{margin:4px 0;color:#6b3f8b}.song p{line-height:1.65;color:#6c5b72;font-size:14px}
+@media(max-width:800px){.song-grid{grid-template-columns:1fr}}
+.secrets{background:linear-gradient(135deg,#fff7e7,#eff9ff)}
+.teddy-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
+.secret{background:#fff;border:2px solid #ffe0ac;border-radius:22px;padding:18px;text-align:center;box-shadow:var(--shadow);transition:.25s}
+.secret:hover{transform:translateY(-5px)}
+.secret .bear{font-size:52px}.secret span{display:block;font-weight:800;color:#b56a2b;font-size:12px;margin-top:5px}
+.secret.found{background:#fff1f7;border-color:#ff9fc0}
+.secret.found .bear{animation:pop .45s}
+@keyframes pop{50%{transform:scale(1.25) rotate(-8deg)}}
+@media(max-width:800px){.teddy-grid{grid-template-columns:repeat(2,1fr)}}
+.reasons{background:#fff}
+.reason-wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;max-width:980px;margin:auto}
+.reason{background:linear-gradient(145deg,#fff8fb,#fff);border:1px solid #f5dce7;border-radius:17px;padding:15px;min-height:90px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 20px rgba(80,40,60,.06)}
+.reason b{color:#ff6b99;font-size:18px}.reason span{font-size:14px;line-height:1.4}
+@media(max-width:850px){.reason-wrap{grid-template-columns:repeat(2,1fr)}}
+.quiz{background:linear-gradient(135deg,#fff0f5,#fff8db)}
+.quizbox{max-width:760px;margin:auto;background:#fff;border-radius:30px;padding:30px;box-shadow:var(--shadow);text-align:center}
+.qcount{font-weight:800;color:#df4e83;font-size:13px}.question{font-size:27px;color:#4b2340;margin:18px 0 22px;font-weight:700}
+.options{display:grid;gap:12px}.option{background:#fff7fa;border:2px solid #ffd8e5;padding:15px;border-radius:16px;color:#684b59;font-weight:700}.option:hover{border-color:#ff80aa;background:#fff0f5}.option.selected{background:#ff75a0;color:#fff;border-color:#ff75a0}
+.quiz-actions{display:flex;justify-content:center;gap:10px;margin-top:20px}.result{display:none;padding:25px;background:#fff2f7;border-radius:22px;margin-top:18px}.result h3{font-family:Pacifico;font-size:30px;color:#df4e83;font-weight:400}
+.letter{background:linear-gradient(180deg,#fff3f8,#fff9e9);overflow:hidden}
+.letter-card{max-width:820px;margin:auto;background:rgba(255,255,255,.9);padding:40px;border-radius:30px;box-shadow:var(--shadow);position:relative}
+.letter-card:before{content:"🌹 🌸 🌹 🌸 🌹";position:absolute;top:-15px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:25px}
+.letter-card p{font-size:17px;line-height:2;margin:15px 0}.signature{font-family:Pacifico;color:#df4e83;font-size:30px}
+.firework{position:fixed;pointer-events:none;font-size:30px;z-index:3000;animation:fire 1.8s forwards}
+@keyframes fire{0%{transform:scale(.3);opacity:0}20%{opacity:1}100%{transform:scale(2.7) translateY(-80px);opacity:0}}
+.modal{position:fixed;inset:0;background:rgba(53,25,44,.5);z-index:4000;display:none;place-items:center;padding:20px}
+.modal.show{display:grid}.modal-card{background:#fff;border-radius:28px;max-width:480px;width:100%;padding:30px;text-align:center;box-shadow:0 30px 90px rgba(0,0,0,.25)}.modal-card .big{font-size:70px}.modal-card h3{font-family:Pacifico;font-size:30px;color:#df4e83;font-weight:400}
+footer{padding:30px;text-align:center;background:#4b2340;color:#fff0f6}
+.small{font-size:12px;opacity:.8}
+</style>
+</head>
+<body>
+<div id="loader"><div class="loader-box"><div class="loader-teddy">🧸🌹</div><h1>365 Days of Us</h1><p>Loading a little world made for Dhibu…</p></div></div>
+<div id="progress"></div><div id="petals"></div>
+
+<nav>
+ <a href="#home">🏠 Start</a><a href="#heart">❤️ Heart</a><a href="#story">📖 Story</a><a href="#scrapbook">📸 Memories</a><a href="#songs">🎵 Songs</a><a href="#secrets">🧸 Secrets</a><a href="#reasons">💗 50 Reasons</a><a href="#quiz">🎮 Quiz</a><a href="#letter">💌 Letter</a>
+</nav>
+
+<section id="home" class="hero">
+ <div class="teddy t1">🧸</div><div class="teddy t2">🧸🌹</div><div class="teddy t3">🧸💗</div><div class="teddy t4">🧸🌸</div>
+ <div class="container hero-content reveal">
+   <div class="sun">☀️</div>
+   <div class="script">A little world for us</div>
+   <h1>365 Days of Us</h1>
+   <h2>Jainu ❤️ Dhibu</h2>
+   <p>Some stories begin with a message…<br>Some begin with friendship…<br><b>And some become the most beautiful chapter of our lives.</b></p>
+   <button class="btn" onclick="go('heart')">Enter Our Story 💕</button>
+ </div>
+</section>
+
+<section id="heart" class="pink">
+ <div class="container center reveal">
+  <div style="font-size:78px">🧸🌹🧸</div>
+  <div class="script" style="font-size:35px">Dear Dhibu,</div>
+  <h2 class="section-title">This isn't just a website.</h2>
+  <p class="section-sub">It's every memory, every smile, every fight, every sacrifice, and every moment that brought us here. Tap the teddy when you're ready. 🧸</p>
+  <button class="btn" onclick="openHeart()">Open My Heart ❤️</button>
+ </div>
+</section>
+
+<section id="story" class="soft">
+ <div class="container reveal">
+  <h2 class="section-title center">📖 Our Story</h2>
+  <p class="section-sub">Turn this little timeline slowly. No skipping. Every chapter deserves its own moment. 🌸</p>
+  <div class="timeline">
+   <article class="chapter">
+    <span class="badge">CHAPTER 01</span><h3>The Beginning</h3>
+    <img src="images/memory1.jpg" alt="Our memory 1"><p>We first crossed paths through a small event. Neither of us knew that one day we'd become each other's favourite person.</p>
+   </article>
+   <article class="chapter">
+    <span class="badge">CHAPTER 02</span><h3>The Unexpected Reunion</h3>
+    <img src="images/memory2.jpg" alt="Our memory 2"><p>A year later, we became classmates. Friends. Then best friends. Then something we could never ignore.</p>
+   </article>
+   <article class="chapter">
+    <span class="badge">CHAPTER 03 • MARCH 1, 2025</span><h3>The Day Everything Changed</h3>
+    <img src="images/memory3.jpg" alt="Our memory 3"><p>The day we finally spoke our hearts. The day of our first hug. The day everything changed.</p>
+   </article>
+   <article class="chapter">
+    <span class="badge">CHAPTER 04 • AUGUST 30, 2025</span><h3>We Chose Each Other</h3>
+    <img src="images/memory4.jpg" alt="Our memory 4"><p>After doubts. After sacrifices. After fights. After choosing each other again and again. We finally became us.</p>
+   </article>
+   <article class="chapter">
+    <span class="badge">CHAPTER 05</span><h3>The Memory I'll Never Forget</h3>
+    <img src="images/memory5.jpg" alt="Our memory 5"><p>When I wasn't okay... You cared for me in a way that felt like home. For the first time, I saw a mother's care in someone who loved me. And I cried.</p>
+   </article>
+   <article class="chapter">
+    <span class="badge">CHAPTER 06</span><h3>Our Little Live-In Story</h3>
+    <img src="images/memory6.jpg" alt="Our memory 6"><p>Coming and going. Sharing time together. Feeling like home. Those few days became memories I'll never trade for anything.</p>
+   </article>
+  </div>
+  <div class="center"><button class="btn alt" onclick="go('scrapbook')">Continue to our memory book 📸</button></div>
+ </div>
+</section>
+
+<section id="scrapbook" class="scrapbook">
+ <div class="container reveal">
+  <h2 class="section-title center">📸 College Memory Book</h2>
+  <p class="section-sub">Not a normal gallery. A tiny virtual scrapbook. Each photo is a page from our little book. More photos can be added later.</p>
+  <div class="book">
+   <div class="page" style="--r:-1.2deg"><img src="images/memory7.jpg"><h4>One of those days ✨</h4><p>Some pictures become memories before we even realise it.</p></div>
+   <div class="page" style="--r:1.1deg"><img src="images/memory8.jpg"><h4>Us, being us ❤️</h4><p>A random frame that somehow feels anything but random.</p></div>
+   <div class="page" style="--r:-.8deg"><img src="images/memory9.jpg"><h4>Little moments 🌸</h4><p>The ordinary moments are secretly my favourites.</p></div>
+   <div class="page" style="--r:1.6deg"><img src="images/memory10.jpg"><h4>A memory to keep 🧸</h4><p>One more page in the story we keep writing.</p></div>
+  </div>
+  <div class="center" style="margin-top:30px"><button class="btn" onclick="go('songs')">Next chapter 🎵</button></div>
+ </div>
+</section>
+
+<section id="songs" class="songs">
+ <div class="container reveal">
+  <h2 class="section-title center">🎵 Our Songs</h2>
+  <p class="section-sub">Every song has a little meaning attached to it. Add your preferred YouTube/Spotify link later by editing the <b>songLinks</b> object near the bottom of this file.</p>
+  <div class="song-grid">
+   <article class="song"><div class="moon">🌙</div><h3>Abhi Kuch Dino Se</h3><p>From friendship to something more… This reminds me of the days when we were becoming us.</p><button class="btn alt" onclick="playSong('Abhi Kuch Dino Se')">Open song 🎧</button></article>
+   <article class="song"><div class="moon">🌙</div><h3>Perfect</h3><p>Because no matter how many people exist in this world… you always felt perfect for me.</p><button class="btn alt" onclick="playSong('Perfect')">Open song 🎧</button></article>
+   <article class="song"><div class="moon">🌙</div><h3>Tujhko Jo Paya</h3><p>If I could stop one moment forever… it would be the moment I found you.</p><button class="btn alt" onclick="playSong('Tujhko Jo Paya')">Open song 🎧</button></article>
+   <article class="song"><div class="moon">🌙</div><h3>Tum Mile</h3><p>The world changed after you entered it.</p><button class="btn alt" onclick="playSong('Tum Mile')">Open song 🎧</button></article>
+   <article class="song"><div class="moon">🌙</div><h3>Blue</h3><p>The song that makes me miss you the most.</p><button class="btn alt" onclick="playSong('Blue')">Open song 🎧</button></article>
+   <article class="song"><div class="moon">🌙</div><h3>Bairan</h3><p>Because hearing you listen to me sing is a memory I always cherish.</p><button class="btn alt" onclick="playSong('Bairan')">Open song 🎧</button></article>
+  </div>
+  <div class="center" style="margin-top:30px"><button class="btn" onclick="go('secrets')">Find the teddy secrets 🧸</button></div>
+ </div>
+</section>
+
+<section id="secrets" class="secrets">
+ <div class="container reveal">
+  <h2 class="section-title center">🧸 Teddy Secret Messages</h2>
+  <p class="section-sub">There are 10 hidden messages. Tap every teddy. Don't leave even one unopened. 👀❤️</p>
+  <div class="teddy-grid" id="teddyGrid"></div>
+  <div class="center" style="margin-top:30px"><button class="btn" onclick="go('reasons')">I found them all 💗</button></div>
+ </div>
+</section>
+
+<section id="reasons" class="reasons">
+ <div class="container reveal">
+  <h2 class="section-title center">❤️ 50 Reasons Why I Love You</h2>
+  <p class="section-sub">And honestly… 50 reasons aren't enough.</p>
+  <div class="reason-wrap" id="reasonsGrid"></div>
+  <div class="center" style="margin-top:30px"><div class="script" style="font-size:32px">∞ infinite reasons to love you.</div><button class="btn" onclick="go('quiz')" style="margin-top:18px">Test how well you know Jainu 🎮</button></div>
+ </div>
+</section>
+
+<section id="quiz" class="quiz">
+ <div class="container reveal">
+  <h2 class="section-title center">🎮 The Jainu × Dhibu Quiz</h2>
+  <p class="section-sub">One question at a time. No peeking. Your answers stay on this page until the final score.</p>
+  <div class="quizbox">
+   <div id="quizMain">
+    <div class="qcount" id="qcount"></div>
+    <div class="question" id="question"></div>
+    <div class="options" id="options"></div>
+    <div class="quiz-actions"><button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>Next ❤️</button></div>
+   </div>
+   <div class="result" id="result"></div>
+  </div>
+ </div>
+</section>
+
+<section id="letter" class="letter">
+ <div class="container reveal">
+  <div class="letter-card">
+   <div class="center" style="font-size:80px">🌸🌙🌸</div>
+   <h2 class="section-title center">💌 Dear Dhibu,</h2>
+   <p>We aren't perfect. We've fought. We've doubted. We've cried.</p>
+   <p>But somehow… we always found our way back to each other.</p>
+   <p>Thank you for every memory.<br>Thank you for every sacrifice.<br>Thank you for every smile.<br>Thank you for choosing us.</p>
+   <p><b>Happy First Anniversary ❤️</b></p>
+   <p class="signature">Forever yours,<br>Jainu</p>
+   <div class="center" style="margin-top:25px"><button class="btn" onclick="finalFireworks()">One last surprise 🎆</button></div>
+  </div>
+ </div>
+</section>
+
+<footer>Made with too many memories, a few teddy bears, and one very full heart. ❤️<div class="small">Jainu × Dhibu • 365 Days of Us</div></footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+ <div class="modal-card"><div class="big" id="modalIcon">🧸</div><h3 id="modalTitle"></h3><p id="modalText"></p><button class="btn" onclick="closeModal()">Keep this one in your heart ❤️</button></div>
+</div>
+
+<script>
+const songLinks = {
+  "Abhi Kuch Dino Se":"",
+  "Perfect":"",
+  "Tujhko Jo Paya":"",
+  "Tum Mile":"",
+  "Blue":"",
+  "Bairan":""
+};
+
+const secrets = [
+ "I still smile reading our old chats.",
+ "I still remember our first hug.",
+ "You are my safest place.",
+ "Thank you for staying.",
+ "Thank you for choosing me.",
+ "You make ordinary days feel special.",
+ "Your presence can calm my entire world.",
+ "I love the way you understand the things I don't say.",
+ "Somehow, home started feeling like a person.",
+ "If I had to choose again, I'd still choose you."
+];
+
+const reasons = [
+ "Your care.","The way you treat everyone.","Your motivation.","Your childish side.","Your angry face.",
+ "Your crying face.","Your honesty.","Your loyalty.","Your patience.","Your smile.",
+ "Your voice.","Your hugs.","Your confidence.","Your kindness.","Your support.",
+ "The way you believe in me.","Your laugh.","Your energy.","Your stubbornness.","Your heart.",
+ "The way you remember small things.","The way you protect people.","The way you love.","Your excitement.","Your innocence.",
+ "Your maturity.","Your dedication.","Your warmth.","Your empathy.","Your eyes.",
+ "Your messages.","Your good mornings.","Your good nights.","Your random calls.","Your advice.",
+ "Your trust.","The way you handle difficult situations.","Your positivity.","Your courage.","Your dreams.",
+ "The way you celebrate my wins.","The way you stand by me.","The way you make ordinary moments special.","The way you calm me.","The way you understand me.",
+ "The way you challenge me to improve.","The way you make me feel loved.","The way you make me feel at home.","The way you became my favourite person.","Because 50 reasons aren't enough."
+];
+
+const quiz = [
+ {q:"What would Jainu choose first on a perfect day with Dhibu?",o:["A quiet memory-making day","A boring meeting","Doing nothing all day","Running away"],a:0},
+ {q:"What is the most dangerous thing for Jainu?",o:["Dhibu's angry face 😂","Rain","College","A teddy bear"],a:0},
+ {q:"Which chapter matters because it changed everything?",o:["March 1, 2025","January 1, 2020","June 5, 2026","December 25"],a:0},
+ {q:"What does Jainu call Dhibu here?",o:["Dhibu ❤️","Madam","Boss","Professor"],a:0},
+ {q:"What does this website represent?",o:["Every memory that brought us here","A college assignment","A normal gallery","A music player"],a:0}
+];
+
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}
+function openHeart(){showModal("🧸🌹","You found my heart.","And unfortunately for you, Dhibu… you already had it. ❤️")}
+function showModal(icon,title,text){document.getElementById("modalIcon").textContent=icon;document.getElementById("modalTitle").textContent=title;document.getElementById("modalText").textContent=text;document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function playSong(name){
+  if(songLinks[name]) window.open(songLinks[name],"_blank");
+  else showModal("🌙🎵",name,"Add your YouTube or Spotify link in the songLinks object at the bottom of index.html, then this button will open it.");
+}
+function makePetal(){
+ const p=document.createElement("div");p.className="petal";p.textContent=["🌸","🌹","✨","💗"][Math.floor(Math.random()*4)];
+ p.style.left=Math.random()*100+"vw";p.style.animationDuration=(5+Math.random()*6)+"s";p.style.fontSize=(12+Math.random()*15)+"px";
+ document.getElementById("petals").appendChild(p);setTimeout(()=>p.remove(),12000)
+}
+setInterval(makePetal,850);
+
+const tg=document.getElementById("teddyGrid");
+secrets.forEach((s,i)=>{
+ const el=document.createElement("button");el.className="secret";el.innerHTML=`<div class="bear">🧸</div><span>SECRET #${i+1}</span>`;
+ el.onclick=()=>{el.classList.add("found");showModal("🧸❤️","You found Secret #"+(i+1),s);if(document.querySelectorAll(".secret.found").length===10) setTimeout(()=>showModal("🎉🧸","All 10 secrets found!","Okay Dhibu, you officially win the teddy hunt. ❤️"),500)};
+ tg.appendChild(el);
+});
+const rg=document.getElementById("reasonsGrid");
+reasons.forEach((r,i)=>{const d=document.createElement("div");d.className="reason";d.innerHTML=`<b>${i+1}</b><span>${r}</span>`;rg.appendChild(d)});
+
+let qi=0,score=0,selected=null;
+function renderQuestion(){
+ selected=null;document.getElementById("nextBtn").disabled=true;
+ const x=quiz[qi];document.getElementById("qcount").textContent=`QUESTION ${qi+1} OF ${quiz.length}`;
+ document.getElementById("question").textContent=x.q;
+ const box=document.getElementById("options");box.innerHTML="";
+ x.o.forEach((op,i)=>{const b=document.createElement("button");b.className="option";b.textContent=op;b.onclick=()=>selectOption(i,b);box.appendChild(b)})
+}
+function selectOption(i,b){if(selected!==null)return;selected=i;document.querySelectorAll(".option").forEach(x=>x.disabled=true);b.classList.add("selected");if(i===quiz[qi].a)score++;document.getElementById("nextBtn").disabled=false}
+function nextQuestion(){
+ if(selected===null)return;qi++;
+ if(qi<quiz.length) renderQuestion(); else finishQuiz();
+}
+function finishQuiz(){
+ document.getElementById("quizMain").style.display="none";
+ const r=document.getElementById("result");r.style.display="block";
+ let msg=score>=4?"Wow Dhibu, you know Jainu very well ❤️":score>=2?"Not bad… someone still needs a little refresher course 😂":"Looks like someone needs a serious Jainu crash course 😂❤️";
+ r.innerHTML=`<div style="font-size:58px">🧸🎉</div><h3>${score}/${quiz.length}</h3><p>${msg}</p><button class="btn" onclick="go('letter')">Read my final letter 💌</button>`;
+}
+renderQuestion();
+
+const loader=document.getElementById("loader");
+window.addEventListener("load",()=>setTimeout(()=>loader.style.opacity="0",700));
+setTimeout(()=>loader.remove(),1600);
+
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(x=>obs.observe(x));
+window.addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;document.getElementById("progress").style.width=(scrollY/h*100)+"%"});
+
+function finalFireworks(){
+ for(let i=0;i<26;i++) setTimeout(()=>{
+   const f=document.createElement("div");f.className="firework";f.textContent=["🎆","💗","🌸","✨","🧸"][Math.floor(Math.random()*5)];
+   f.style.left=(10+Math.random()*80)+"vw";f.style.top=(20+Math.random()*60)+"vh";
+   document.body.appendChild(f);setTimeout(()=>f.remove(),1900);
+ },i*70);
+ showModal("🎆❤️","Happy First Anniversary, Dhibu!","365 days down. A lifetime of memories still to make.");
+}
+</script>
+</body>
+</html>
