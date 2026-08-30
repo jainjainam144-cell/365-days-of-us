@@ -467,13 +467,240 @@ const reasons = [
 ];
 
 const quiz = [
- {q:"What would Jainu choose first on a perfect day with Dhibu?",o:["A quiet memory-making day","A boring meeting","Doing nothing all day","Running away"],a:0},
- {q:"What is the most dangerous thing for Jainu?",o:["Dhibu's angry face 😂","Rain","College","A teddy bear"],a:0},
- {q:"Which chapter matters because it changed everything?",o:["March 1, 2025","January 1, 2020","June 5, 2026","December 25"],a:0},
- {q:"What does Jainu call Dhibu here?",o:["Dhibu ❤️","Madam","Boss","Professor"],a:0},
- {q:"What does this website represent?",o:["Every memory that brought us here","A college assignment","A normal gallery","A music player"],a:0}
-];
 
+{
+q:"What was my first impression of you?",
+o:[
+"Too innocent to be real",
+"Slightly intimidating but interesting",
+"Cute but impossible to understand",
+"Someone I wanted to know better"
+],
+a:3
+},
+
+{
+q:"Which thing about you makes me smile the fastest?",
+o:[
+"Your voice notes",
+"Your random texts",
+"Your laugh",
+"Your expressions"
+],
+a:3
+},
+
+{
+q:"If we were stuck somewhere together for a day, where would I choose?",
+o:[
+"Beach at sunset",
+"Mountain viewpoint",
+"Cozy café",
+"Long drive destination"
+],
+a:1
+},
+
+{
+q:"Which situation describes us best?",
+o:[
+"Best friends who fell in love",
+"Opposites who somehow fit perfectly",
+"Two chaotic people together",
+"Soulmates pretending to be normal"
+],
+a:1
+},
+
+{
+q:"What is my favourite version of you?",
+o:[
+"When you're laughing uncontrollably",
+"When you're caring",
+"When you're being dramatic",
+"When you're shy"
+],
+a:1
+},
+
+{
+q:"Which message from you makes me happiest?",
+o:[
+"Reached home safely",
+"I miss you",
+"Call me when free",
+"I'm proud of you"
+],
+a:3
+},
+
+{
+q:"If our relationship was a movie genre, which one?",
+o:[
+"Romantic comedy",
+"Adventure romance",
+"Feel-good drama",
+"Crazy unpredictable story"
+],
+a:3
+},
+
+{
+q:"What would I probably do if you're upset?",
+o:[
+"Keep talking until you smile",
+"Stay beside you quietly",
+"Send something funny",
+"Try solving the problem immediately"
+],
+a:3
+},
+
+{
+q:"Which thing do I secretly find cutest?",
+o:[
+"Your angry face",
+"Your sleepy face",
+"Your excited face",
+"Your confused face"
+],
+a:2
+},
+
+{
+q:"What would I choose as our dream future memory?",
+o:[
+"Traveling together",
+"Watching sunsets together",
+"Celebrating achievements together",
+"Building a happy life together"
+],
+a:3
+},
+
+{
+q:"Who said 'I Love You' first?",
+o:[
+"Jainam",
+"Labdhi",
+"Both together",
+"Tere mann ki baat jaanne ke maine bola tere badle"
+],
+a:0
+},
+
+{
+q:"What is my favourite food?",
+o:[
+"Girmit",
+"Kaju Katli",
+"Manchurian",
+"Your handmade food"
+],
+a:3
+},
+
+{
+q:"What is my favourite colour?",
+o:[
+"Black",
+"Blue",
+"Red",
+"White"
+],
+a:3
+},
+
+{
+q:"Which celebrity couple do we admire the most?",
+o:[
+"Virat & Anushka",
+"Riteish & Genelia",
+"Yogesh & Akansha",
+"Sidharth & Kiara"
+],
+a:0
+},
+
+{
+q:"When I finally understood your feelings...",
+o:[
+"I stayed quiet",
+"I changed the topic",
+"I got confused",
+"I told you what was in my heart"
+],
+a:3
+},
+
+{
+q:"What would Jainu choose first on a perfect day with Dhibu?",
+o:[
+"A quiet memory-making day",
+"A boring meeting",
+"Doing nothing",
+"Cleaning notes"
+],
+a:0
+},
+
+{
+q:"What is the most dangerous thing for Jainu?",
+o:[
+"Dhibu's angry face 😂",
+"Rain",
+"College",
+"A teddy bear"
+],
+a:0
+},
+
+{
+q:"Which chapter matters because it changed everything?",
+o:[
+"March 1, 2025",
+"January 1, 2020",
+"June 5, 2026",
+"December 25"
+],
+a:0
+},
+
+{
+q:"What does Jainu call Dhibu here?",
+o:[
+"Dhibu ❤️",
+"Madam",
+"Boss",
+"Professor"
+],
+a:0
+},
+
+{
+q:"What does this website represent?",
+o:[
+"Every memory that brought us here",
+"A college assignment",
+"A normal gallery",
+"A music collection"
+],
+a:0
+},
+
+{
+q:"What is the most beautiful thing we've built together?",
+o:[
+"Memories",
+"Trust",
+"Happiness",
+"Our Story"
+],
+a:3
+}
+
+];
+  
 function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}
 function openHeart(){showModal("🧸🌹","You found my heart.","And unfortunately for you, Dhibu… you already had it. ❤️")}
 function showModal(icon,title,text){document.getElementById("modalIcon").textContent=icon;document.getElementById("modalTitle").textContent=title;document.getElementById("modalText").textContent=text;document.getElementById("modal").classList.add("show")}
@@ -683,10 +910,39 @@ function nextQuestion(){
  if(qi<quiz.length) renderQuestion(); else finishQuiz();
 }
 function finishQuiz(){
+
  document.getElementById("quizMain").style.display="none";
- const r=document.getElementById("result");r.style.display="block";
- let msg=score>=4?"Wow Dhibu, you know Jainu very well ❤️":score>=2?"Not bad… someone still needs a little refresher course 😂":"Looks like someone needs a serious Jainu crash course 😂❤️";
- r.innerHTML=`<div style="font-size:58px">🧸🎉</div><h3>${score}/${quiz.length}</h3><p>${msg}</p><button class="btn" onclick="go('letter')">Read my final letter 💌</button>`;
+
+ const r=document.getElementById("result");
+ r.style.display="block";
+
+ let msg="";
+
+ if(score<=5){
+   msg="😂 Hmm Dhibu... someone needs revision classes!";
+ }
+ else if(score<=10){
+   msg="❤️ Not bad Dhibu, you know Jainu quite well!";
+ }
+ else if(score<=15){
+   msg="🥰 You know Jainu really well!";
+ }
+ else if(score<=20){
+   msg="💖 Soulmate level unlocked!";
+ }
+ else{
+   msg="👑 21/21! Dhibu, you know Jainu better than anyone else in this world ❤️";
+ }
+
+ r.innerHTML=`
+ <div style="font-size:58px">🧸🎉</div>
+ <h3>${score}/${quiz.length}</h3>
+ <p>${msg}</p>
+ <button class="btn" onclick="go('letter')">
+ Read my final letter 💌
+ </button>
+ `;
+
 }
 renderQuestion();
 
