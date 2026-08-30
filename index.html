@@ -279,6 +279,85 @@ footer{padding:30px;text-align:center;background:#4b2340;color:#fff0f6}
   }
 
 }
+  /* ================================
+   BEAUTIFUL MEMORY COLLAGES
+   ================================ */
+
+.collage-page {
+  overflow: hidden;
+}
+
+.photo-collage {
+  width: 100%;
+  margin-bottom: 16px;
+  display: grid;
+  gap: 6px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+/* Memory 8 + 9 / Memory 7 + 11 */
+.two-horizontal {
+  grid-template-columns: 1fr 1fr;
+}
+
+.two-horizontal img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+/* 18 above + 19 below */
+.vertical-pair {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.vertical-pair img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+/* 14 + 15 + 16 + 17 */
+.four-grid {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.four-grid img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+/* Cute little photo-card effect */
+.photo-collage img {
+  transition: transform .35s ease, filter .35s ease;
+}
+
+.photo-collage img:hover {
+  transform: scale(1.025);
+  filter: brightness(1.04);
+}
+
+.collage-page h4 {
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+.collage-page p {
+  line-height: 1.6;
+}
 </style>
 </head>
 <body>
@@ -349,12 +428,67 @@ footer{padding:30px;text-align:center;background:#4b2340;color:#fff0f6}
  <div class="container reveal">
   <h2 class="section-title center">📸 College Memory Book</h2>
   <p class="section-sub">Not a normal gallery. A tiny virtual scrapbook. Each photo is a page from our little book. More photos can be added later.</p>
-  <div class="book">
-   <div class="page" style="--r:-1.2deg"><img src="memory7.jpg"><h4>One of those days ✨</h4><p>Some pictures become memories before we even realise it.</p></div>
-   <div class="page" style="--r:1.1deg"><img src="memory8.jpg"><h4>Us, being us ❤️</h4><p>A random frame that somehow feels anything but random.</p></div>
-   <div class="page" style="--r:-.8deg"><img src="memory9.jpg"><h4>Little moments 🌸</h4><p>The ordinary moments are secretly my favourites.</p></div>
-   <div class="page" style="--r:1.6deg"><img src="memory10.jpg"><h4>A memory to keep 🧸</h4><p>One more page in the story we keep writing.</p></div>
+  <!-- COLLAGE 1 — Memory 8 + Memory 9 -->
+<div class="page collage-page" style="--r:-1.2deg">
+  <div class="photo-collage two-horizontal">
+    <img src="memory8.jpg">
+    <img src="memory9.jpg">
   </div>
+
+  <h4>Us, in little pieces ❤️✨</h4>
+  <p>
+    Two moments, two smiles, one beautiful little story.
+    Somehow, being together makes even ordinary days feel special. 🌷
+  </p>
+</div>
+
+
+<!-- COLLAGE 2 — 18 + 19, vertically arranged -->
+<div class="page collage-page" style="--r:1deg">
+  <div class="photo-collage vertical-pair">
+    <img src="18.jpg">
+    <img src="19.jpg">
+  </div>
+
+  <h4>Side by side, always 🫶🏻</h4>
+  <p>
+    Different moments, same feeling — a little laughter,
+    a little chaos, and a whole lot of us. 🤍
+  </p>
+</div>
+
+
+<!-- COLLAGE 3 — Memory 7 + Image 11 -->
+<div class="page collage-page" style="--r:-.8deg">
+  <div class="photo-collage two-horizontal">
+    <img src="memory7.jpg">
+    <img src="11.jpg">
+  </div>
+
+  <h4>One of those moments 🌸</h4>
+  <p>
+    The kind of memories you don't plan for...
+    they just happen, and somehow become your favourites. ✨
+  </p>
+</div>
+
+
+<!-- COLLAGE 4 — Images 14, 15, 16, 17 -->
+<div class="page collage-page" style="--r:1.5deg">
+  <div class="photo-collage four-grid">
+    <img src="14.jpg">
+    <img src="15.jpg">
+    <img src="16.jpg">
+    <img src="17.jpg">
+  </div>
+
+  <h4>A whole chapter in four frames 💕</h4>
+  <p>
+    Four little snapshots, countless feelings.
+    If memories had a favourite place to live, I'd keep them right here. 🥹✨
+  </p>
+</div>
+ </div>
   <div class="center" style="margin-top:30px"><button class="btn" onclick="go('songs')">Next chapter 🎵</button></div>
  </div>
 </section>
